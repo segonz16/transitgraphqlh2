@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "e0fed64b-c8fa-43aa-8dea-1c19ef412c21",
+		"name": "Transito Graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "propietario",
+			"item": [
+				{
+					"name": "Listar propietarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  findAllPropietario {\r\n    identificacion\r\n    nombre\r\n    direccion\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "propietario por id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  fin {\r\n    identificacion\r\n    nombre\r\n    direccion\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear propietario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  crearPropietario(input: {\r\n    identificacion: \"123456712\",\r\n    tipoPropietario: \"Persona\",\r\n    tipoDocumento: \"CC\",\r\n    nombre: \"Gian Pérez\",\r\n    direccion: \"Calle 123, Bogotá\"\r\n  }) {\r\n    identificacion\r\n    nombre\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar propietario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  actualizarPropietario(id: \"123456789\", input: {\r\n    tipoPropietario: \"Persona\",\r\n    tipoDocumento: \"CC\",\r\n    nombre: \"Juan P. Actualizado\",\r\n    direccion: \"Nueva Dirección\"\r\n  }) {\r\n    identificacion\r\n    nombre\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar propietario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "matricula",
+			"item": [
+				{
+					"name": "Listar matricula",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  listarMatriculas {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n    vehiculo {\r\n      tipo\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "matricula por placa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  matriculaPorPlaca(placa: \"ABC123\") {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n    vehiculo {\r\n      tipo\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear matricula",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  crearMatricula(input: {\r\n    placa: \"ABC123\",\r\n    marca: \"Toyota\",\r\n    fechaMatricula: \"2023-05-10\",\r\n    propietarioId: \"1234567890\",\r\n    vehiculoId: 1\r\n  }) {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar matricula",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  actualizarMatricula(placa: \"ABC123\", input: {\r\n    marca: \"Toyota TXL\",\r\n    fechaMatricula: \"2023-06-01\",\r\n    propietarioId: \"123456789\",\r\n    vehiculoId: 2\r\n  }) {\r\n    placa\r\n    marca\r\n    vehiculo {\r\n      tipo\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar matricula",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  eliminarMatricula(placa: \"ABC123\")\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Infraccion",
+			"item": [
+				{
+					"name": "Listar infracciones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  listarInfracciones {\r\n    id\r\n    fecha\r\n    accionadaPor\r\n    matricula{\r\n      placa\r\n      propietario{\r\n        nombre\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infracciones por propietario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n  infraccionesPorPropietario(identificacion: \"1234567890\") {\r\n    id\r\n    fecha\r\n    accionadaPor\r\n    matricula{\r\n      placa\r\n      propietario{\r\n        identificacion\r\n        nombre\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar infraccion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  registrarInfraccion(input: {\r\n    fecha: \"2024-03-11\",\r\n    accionadaPor: \"Agente\",\r\n    placa: \"ABC123\"\r\n  }) {\r\n    id\r\n    fecha\r\n    accionadaPor\r\n    matricula{\r\n      placa\r\n      propietario{\r\n        nombre\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar infraccion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  actualizarInfraccion(id: 28, input: {\r\n    fecha: \"2024-03-12\",\r\n    accionadaPor: \"Agente\",\r\n    placa: \"ABC123\"\r\n  }) {\r\n    id\r\n    fecha\r\n    accionadaPor\r\n    matricula{\r\n      placa\r\n      propietario{\r\n        nombre\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar infraccion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  eliminarInfraccion(id: 29)\r\n}\r\n",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

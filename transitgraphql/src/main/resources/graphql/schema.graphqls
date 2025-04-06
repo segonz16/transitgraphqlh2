@@ -1,0 +1,90 @@
+# ---------- Tipos ----------
+type Propietario {
+    identificacion: String!
+    tipoPropietario: String
+    tipoDocumento: String
+    nombre: String
+    direccion: String
+    matriculas: [Matricula]
+}
+
+type Vehiculo {
+    id: ID
+    tipo: String
+}
+
+type Matricula {
+    placa: String!
+    marca: String
+    fechaMatricula: String
+    propietario: Propietario
+    vehiculo: Vehiculo
+    infracciones: [Infraccion]
+}
+
+type Infraccion {
+    id: ID!
+    fecha: String
+    accionadaPor: String
+    matricula: Matricula
+}
+
+# ---------- Queries ----------
+type Query {
+    # Propietario
+    findByIdPropietario(identificacion: String!): Propietario
+    findAllPropietario: [Propietario]
+
+    # Matricula
+    matriculaPorPlaca(placa: String!): Matricula
+    listarMatriculas: [Matricula]
+
+    # Infraccion
+    infraccionPorId(id: ID!): Infraccion
+    infraccionesPorPlaca(placa: String!): [Infraccion]
+    listarInfracciones: [Infraccion]
+    infraccionesPorPropietario(identificacion: String!): [Infraccion]
+
+    listAllVehiculos: [Vehiculo]
+}
+
+# ---------- Mutations ----------
+type Mutation {
+    # Propietario
+    crearPropietario(input: PropietarioInput!): Propietario
+    actualizarPropietario(id: String!, input: PropietarioInput!): Propietario
+    eliminarPropietario(id: String!): Boolean
+
+    # Matricula
+    crearMatricula(input: MatriculaInput!): Matricula
+    actualizarMatricula(placa: String!, input: MatriculaInput!): Matricula
+    eliminarMatricula(placa: String!): Boolean
+
+    # Infraccion
+    registrarInfraccion(input: InfraccionInput!): Infraccion
+    actualizarInfraccion(id: ID!, input: InfraccionInput!): Infraccion
+    eliminarInfraccion(id: ID!): Boolean
+}
+
+# ---------- Inputs ----------
+input PropietarioInput {
+    identificacion: String
+    tipoPropietario: String
+    tipoDocumento: String
+    nombre: String
+    direccion: String
+}
+
+input MatriculaInput {
+    placa: String
+    marca: String
+    fechaMatricula: String
+    propietarioId: String
+    vehiculoId: ID
+}
+
+input InfraccionInput {
+    fecha: String
+    accionadaPor: String
+    placa: String
+}
