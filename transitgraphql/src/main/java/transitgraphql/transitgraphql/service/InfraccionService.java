@@ -21,6 +21,9 @@ public class InfraccionService {
     @Autowired
     private MatriculaRepository matriculaRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     public Infraccion create(InfraccionInput input) {
         Infraccion i = new Infraccion();
         i.setFecha(input.getFecha());
@@ -29,7 +32,21 @@ public class InfraccionService {
         Matricula m = matriculaRepository.findById(input.getPlaca()).orElse(null);
         i.setMatricula(m);
 
-        return infraccionRepository.save(i);
+        // Guardar infracción
+        Infraccion saved = infraccionRepository.save(i);
+
+        // Enviar notificación si el propietario tiene correo
+        if (m != null && m.getPropietario() != null && m.getPropietario().getCorreo() != null) {
+            String correo = m.getPropietario().getCorreo();
+            emailService.sendInfraccionNotification(
+                    correo,
+                    m.getPlaca(),
+                    input.getFecha().toString(),
+                    input.getAccionadaPor()
+            );
+        }
+
+        return saved;
     }
 
     public Infraccion update(Long id, InfraccionInput input) {

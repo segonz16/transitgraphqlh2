@@ -8,7 +8,8 @@ CREATE TABLE propietario (
     tipo_propietario VARCHAR(20), -- Puede ser validado desde la lógica si H2 no soporta CHECK
     tipo_documento VARCHAR(20),
     nombre VARCHAR(100) NOT NULL,
-    direccion VARCHAR(255)
+    direccion VARCHAR(255),
+    correo VARCHAR(255)
 );
 
 CREATE TABLE vehiculo (

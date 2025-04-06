@@ -1,12 +1,13 @@
 -- Insertar propietarios
-INSERT INTO propietario (identificacion, tipo_propietario, tipo_documento, nombre, direccion)
-VALUES ('123456789', 'Persona', 'CC', 'Juan Perez', 'Calle 123, Bogota');
+INSERT INTO propietario (identificacion, tipo_propietario, tipo_documento, nombre, direccion, correo)
+VALUES ('123456789', 'Persona', 'CC', 'Juan Perez', 'Calle 123, Bogota', 'proyectoesp647@gmail.com');
 
-INSERT INTO propietario (identificacion, tipo_propietario, tipo_documento, nombre, direccion)
-VALUES ('987654321', 'Persona', 'CC', 'Maria Gomez', 'Carrera 45, Medellin');
+INSERT INTO propietario (identificacion, tipo_propietario, tipo_documento, nombre, direccion, correo)
+VALUES ('987654321', 'Persona', 'CC', 'Maria Gomez', 'Carrera 45, Medellin', 'proyectoesp647@gmail.com');
 
-INSERT INTO propietario (identificacion, tipo_propietario, tipo_documento, nombre, direccion)
-VALUES ('900123456', 'Empresa', 'NIT', 'Transporte SA', 'Avenida 10, Cali');
+INSERT INTO propietario (identificacion, tipo_propietario, tipo_documento, nombre, direccion, correo)
+VALUES ('900123456', 'Empresa', 'NIT', 'Transporte SA', 'Avenida 10, Cali', 'proyectoesp647@gmail.com');
+
 
 -- Insertar vehículos
 INSERT INTO vehiculo (tipo) VALUES ('Automovil');

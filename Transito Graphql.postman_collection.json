@@ -16,7 +16,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n  findAllPropietario {\r\n    identificacion\r\n    nombre\r\n    direccion\r\n  }\r\n}",
+								"query": "query {\r\n  findAllPropietario {\r\n    identificacion\r\n    nombre\r\n    direccion\r\n    correo\r\n  }\r\n}",
 								"variables": ""
 							}
 						},
@@ -42,7 +42,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n  fin {\r\n    identificacion\r\n    nombre\r\n    direccion\r\n  }\r\n}",
+								"query": "query {\r\n  findByIdPropietario(identificacion: \"1234567890\") {\r\n    identificacion\r\n    nombre\r\n    direccion\r\n    correo\r\n  }\r\n}",
 								"variables": ""
 							}
 						},
@@ -68,7 +68,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\r\n  crearPropietario(input: {\r\n    identificacion: \"123456712\",\r\n    tipoPropietario: \"Persona\",\r\n    tipoDocumento: \"CC\",\r\n    nombre: \"Gian Pérez\",\r\n    direccion: \"Calle 123, Bogotá\"\r\n  }) {\r\n    identificacion\r\n    nombre\r\n  }\r\n}",
+								"query": "mutation {\r\n  crearPropietario(input: {\r\n    identificacion: \"1234567890\",\r\n    tipoPropietario: \"Persona\",\r\n    tipoDocumento: \"CC\",\r\n    nombre: \"Gian Pérez\",\r\n    direccion: \"Calle 123, Bogotá\",\r\n    correo: \"sebastian.goar159@outlook.com\"\r\n  }) {\r\n    identificacion\r\n    nombre\r\n    correo\r\n  }\r\n}",
 								"variables": ""
 							}
 						},
@@ -94,7 +94,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\r\n  actualizarPropietario(id: \"123456789\", input: {\r\n    tipoPropietario: \"Persona\",\r\n    tipoDocumento: \"CC\",\r\n    nombre: \"Juan P. Actualizado\",\r\n    direccion: \"Nueva Dirección\"\r\n  }) {\r\n    identificacion\r\n    nombre\r\n  }\r\n}\r\n",
+								"query": "mutation {\r\n  actualizarPropietario(id: \"123456789\", input: {\r\n    tipoPropietario: \"Persona\",\r\n    tipoDocumento: \"CC\",\r\n    nombre: \"Juan P. Actualizado\",\r\n    direccion: \"Nueva Dirección\",\r\n    correo: \"sebastian.goar159@outlook.com\"\r\n  }) {\r\n    identificacion\r\n    nombre\r\n    correo\r\n  }\r\n}\r\n",
 								"variables": ""
 							}
 						},
@@ -115,9 +115,26 @@
 				{
 					"name": "eliminar propietario",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\r\n  eliminarPropietario(id: \"123456789\")\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"graphql"
+							]
+						}
 					},
 					"response": []
 				}
@@ -186,7 +203,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\r\n  crearMatricula(input: {\r\n    placa: \"ABC123\",\r\n    marca: \"Toyota\",\r\n    fechaMatricula: \"2023-05-10\",\r\n    propietarioId: \"1234567890\",\r\n    vehiculoId: 1\r\n  }) {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n  }\r\n}\r\n",
+								"query": "mutation {\r\n  crearMatricula(input: {\r\n    placa: \"EHK445\",\r\n    marca: \"MAZDA\",\r\n    fechaMatricula: \"2023-05-10\",\r\n    propietarioId: \"1234567890\",\r\n    vehiculoId: 1\r\n  }) {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n  }\r\n}\r\n",
 								"variables": ""
 							}
 						},
@@ -212,7 +229,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\r\n  actualizarMatricula(placa: \"ABC123\", input: {\r\n    marca: \"Toyota TXL\",\r\n    fechaMatricula: \"2023-06-01\",\r\n    propietarioId: \"123456789\",\r\n    vehiculoId: 2\r\n  }) {\r\n    placa\r\n    marca\r\n    vehiculo {\r\n      tipo\r\n    }\r\n  }\r\n}\r\n",
+								"query": "mutation {\r\n  actualizarMatricula(placa: \"EHK445\", input: {\r\n    marca: \"Toyota\",\r\n    fechaMatricula: \"2023-06-01\",\r\n    propietarioId: \"1234567890\",\r\n    vehiculoId: 1\r\n  }) {\r\n    placa\r\n    marca\r\n    vehiculo {\r\n      tipo\r\n    }\r\n  }\r\n}\r\n",
 								"variables": ""
 							}
 						},
@@ -321,7 +338,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation {\r\n  registrarInfraccion(input: {\r\n    fecha: \"2024-03-11\",\r\n    accionadaPor: \"Agente\",\r\n    placa: \"ABC123\"\r\n  }) {\r\n    id\r\n    fecha\r\n    accionadaPor\r\n    matricula{\r\n      placa\r\n      propietario{\r\n        nombre\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+								"query": "mutation {\r\n  registrarInfraccion(input: {\r\n    fecha: \"2024-03-11\",\r\n    accionadaPor: \"Agente\",\r\n    placa: \"EHK445\"\r\n  }) {\r\n    id\r\n    fecha\r\n    accionadaPor\r\n    matricula{\r\n      placa\r\n      propietario{\r\n        nombre\r\n        correo\r\n      }\r\n    }\r\n  }\r\n}\r\n",
 								"variables": ""
 							}
 						},

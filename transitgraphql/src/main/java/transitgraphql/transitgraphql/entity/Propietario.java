@@ -31,6 +31,10 @@ public class Propietario {
     @Column
     private String direccion;
 
+    @Column
+    private String correo;
+
+
     @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL)
     private List<Matricula> matriculas = new ArrayList<>();
 

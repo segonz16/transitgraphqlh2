@@ -5,6 +5,7 @@ type Propietario {
     tipoDocumento: String
     nombre: String
     direccion: String
+    correo: String
     matriculas: [Matricula]
 }
 
@@ -73,6 +74,7 @@ input PropietarioInput {
     tipoDocumento: String
     nombre: String
     direccion: String
+    correo: String
 }
 
 input MatriculaInput {

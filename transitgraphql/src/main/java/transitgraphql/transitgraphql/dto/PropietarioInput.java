@@ -15,5 +15,6 @@ public class PropietarioInput {
     private String tipoDocumento;
     private String nombre;
     private String direccion;
+    private String correo;
 
 }

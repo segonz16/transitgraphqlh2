@@ -30,6 +30,7 @@ public class PropietarioService {
         p.setTipoDocumento(input.getTipoDocumento());
         p.setNombre(input.getNombre());
         p.setDireccion(input.getDireccion());
+        p.setCorreo(input.getCorreo());
         return propietarioRepository.save(p);
     }
 
