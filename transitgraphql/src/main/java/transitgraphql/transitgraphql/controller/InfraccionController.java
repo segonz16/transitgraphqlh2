@@ -7,6 +7,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import transitgraphql.transitgraphql.dto.InfraccionInput;
 import transitgraphql.transitgraphql.entity.Infraccion;
+import transitgraphql.transitgraphql.entity.Matricula;
 import transitgraphql.transitgraphql.service.InfraccionService;
 
 import java.util.List;
@@ -28,8 +29,8 @@ public class InfraccionController {
     }
 
     @QueryMapping
-    public List<Infraccion> infraccionesPorPlaca(@Argument String placa) {
-        return infraccionService.getByPlaca(placa);
+    public List<Infraccion> infraccionesPorPlaca(@Argument Matricula matricula) {
+        return infraccionService.getByPlaca(matricula);
     }
 
     @QueryMapping

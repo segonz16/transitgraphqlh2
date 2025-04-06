@@ -64,6 +64,9 @@ public class MatriculaService {
         return matriculaRepository.findById(placa).orElse(null);
     }
 
+    public List<Matricula> getMatriculas(Propietario propietario) {
+        return matriculaRepository.findByPropietario(propietario);
+    }
 
     public List<Matricula> getAll() {
         return matriculaRepository.findAll();

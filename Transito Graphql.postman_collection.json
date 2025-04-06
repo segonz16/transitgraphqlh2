@@ -16,7 +16,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n  findAllPropietario {\r\n    identificacion\r\n    nombre\r\n    direccion\r\n    correo\r\n  }\r\n}",
+								"query": "query {\r\n  findAllPropietario {\r\n    identificacion\r\n    nombre\r\n    matriculas {\r\n      placa\r\n      marca\r\n      infracciones {\r\n        id\r\n        fecha\r\n        accionadaPor\r\n      }\r\n    }\r\n  }\r\n}\r\n",
 								"variables": ""
 							}
 						},
@@ -151,7 +151,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n  listarMatriculas {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n    vehiculo {\r\n      tipo\r\n    }\r\n  }\r\n}\r\n",
+								"query": "query {\r\n  listarMatriculas {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n    vehiculo {\r\n      tipo\r\n    }\r\n      infracciones {\r\n      id\r\n      fecha\r\n      accionadaPor\r\n    }\r\n  }\r\n}\r\n",
 								"variables": ""
 							}
 						},
@@ -177,7 +177,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n  matriculaPorPlaca(placa: \"ABC123\") {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n    vehiculo {\r\n      tipo\r\n    }\r\n  }\r\n}",
+								"query": "query {\r\n  matriculaPorPlaca(placa: \"EHK445\") {\r\n    placa\r\n    marca\r\n    propietario {\r\n      nombre\r\n    }\r\n    vehiculo {\r\n      tipo\r\n    }\r\n    infracciones {\r\n      id\r\n      fecha\r\n      accionadaPor\r\n    }\r\n  }\r\n}",
 								"variables": ""
 							}
 						},

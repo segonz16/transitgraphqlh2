@@ -76,7 +76,7 @@ public class InfraccionService {
         return infraccionRepository.findAll();
     }
 
-    public List<Infraccion> getByPlaca(String placa) {
-        return infraccionRepository.findByMatriculaPlaca(placa);
+    public List<Infraccion> getByPlaca(Matricula matricula) {
+        return infraccionRepository.findByMatricula(matricula);
     }
 }
