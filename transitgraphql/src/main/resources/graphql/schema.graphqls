@@ -1,4 +1,3 @@
-# ---------- Tipos ----------
 type Propietario {
     identificacion: String!
     tipoPropietario: String
@@ -30,7 +29,6 @@ type Infraccion {
     matricula: Matricula
 }
 
-# ---------- Queries ----------
 type Query {
     # Propietario
     findByIdPropietario(identificacion: String!): Propietario
@@ -49,7 +47,6 @@ type Query {
     listAllVehiculos: [Vehiculo]
 }
 
-# ---------- Mutations ----------
 type Mutation {
     # Propietario
     crearPropietario(input: PropietarioInput!): Propietario
@@ -67,7 +64,6 @@ type Mutation {
     eliminarInfraccion(id: ID!): Boolean
 }
 
-# ---------- Inputs ----------
 input PropietarioInput {
     identificacion: String
     tipoPropietario: String

@@ -1,6 +1,5 @@
 package transitgraphql.transitgraphql.dto;
 
-import jakarta.persistence.Entity;
 import lombok.*;
 
 import java.time.LocalDate;

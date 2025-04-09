@@ -32,10 +32,8 @@ public class InfraccionService {
         Matricula m = matriculaRepository.findById(input.getPlaca()).orElse(null);
         i.setMatricula(m);
 
-        // Guardar infracción
         Infraccion saved = infraccionRepository.save(i);
 
-        // Enviar notificación si el propietario tiene correo
         if (m != null && m.getPropietario() != null && m.getPropietario().getCorreo() != null) {
             String correo = m.getPropietario().getCorreo();
             emailService.sendInfraccionNotification(
